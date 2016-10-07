@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>toggle-area demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../toggle-area.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic toggle-area Demo</h3>
+      <demo-snippet>
+        <template>
+          <toggle-area>
+            <button class="toggle-trigger">
+              Trigger
+            </button>
+            <div class="toggle-true">
+              True
+            </div>
+            <div class="toggle-false">
+              False
+            </div>
+          </toggle-area>
+        </template>
+      </demo-snippet>
+
+      <h3>toggle-area disconnected Demo (only works with Polymer)</h3>
+      <demo-snippet>
+        <template>
+          <toggle-area value$="[[value]]">
+            <button class="toggle-trigger">
+              Trigger
+            </button>
+            <div class="toggle-true">
+              True
+            </div>
+            <div class="toggle-false">
+              False
+            </div>
+          </toggle-area>
+          <div hidden$="[[!value]]">
+            True - Disconnected
+          </div>
+          <div hidden$="[[value]]">
+            False - Disconnected
+          </div>
+        </template>
+      </demo-snippet>
+
+      <h3>toggle-area disconnected Demo</h3>
+      <demo-snippet>
+        <template>
+          <toggle-area id="toggle" onclick="doToggle()">
+            <button class="toggle-trigger">
+              Trigger
+            </button>
+            <div class="toggle-true">
+              True
+            </div>
+            <div class="toggle-false">
+              False
+            </div>
+          </toggle-area>
+          <div id="toggleTrue" hidden>
+            True - Disconnected
+          </div>
+          <div id="toggleFalse">
+            False - Disconnected
+          </div>
+          <script>
+            function doToggle() {
+              var toggle = document.getElementById('toggle');
+              var ifTrue = document.getElementById('toggleTrue');
+              var ifFalse = document.getElementById('toggleFalse');
+              ifTrue.hidden = !toggle.value;
+              ifFalse.hidden = toggle.value;
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>

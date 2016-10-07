@@ -1,0 +1,53 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`toggle-area`
+A container with a clickable area, and two areas that alternate being hidden when the clickable area is clicked / tapped.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="toggle-area">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <div on-tap="toggle">
+      <content select=".toggle-trigger"></content>
+    </div>
+    <div hidden$="[[!value]]">
+      <content select=".toggle-true"></content>
+    </div>
+    <div hidden$="[[value]]">
+      <content select=".toggle-false"></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'toggle-area',
+
+      properties: {
+        /**
+         * The internal state of the toggle.
+         */
+        value: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true
+        }
+      },
+      /**
+       * Toggles the internal state.
+       */
+      toggle: function() {
+        this.value = !this.value;
+      }
+    });
+  </script>
+</dom-module>
