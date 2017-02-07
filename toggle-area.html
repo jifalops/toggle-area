@@ -4,7 +4,7 @@
 `toggle-area`
 A container with a clickable area, and two areas that alternate being hidden when the clickable area is clicked / tapped.
 
-@demo demo/index.html 
+@demo demo/index.html
 -->
 
 <dom-module id="toggle-area">
@@ -16,13 +16,13 @@ A container with a clickable area, and two areas that alternate being hidden whe
     </style>
 
     <div on-tap="toggle">
-      <content select=".toggle-trigger"></content>
+      <slot name="trigger"></slot>
     </div>
     <div hidden$="[[!value]]">
-      <content select=".toggle-true"></content>
+      <slot name="true"></slot>
     </div>
     <div hidden$="[[value]]">
-      <content select=".toggle-false"></content>
+      <slot name="false"></slot>
     </div>
   </template>
 
